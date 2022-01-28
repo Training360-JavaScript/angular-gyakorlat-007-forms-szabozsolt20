@@ -1,0 +1,31 @@
+<div class="row">
+  <div *ngIf="event$ | async as ev" class="col-6 offset-3">
+    <form #eventEditorForm="ngForm" (ngSubmit)="onUpdate(eventEditorForm)">
+      <input required [(ngModel)]="ev.id" type="hidden" name="id">
+      <div class="form-group">
+        <label for="name-id">Name</label>
+        <input required [(ngModel)]="ev.name" type="text" class="form-control" name="name" id="name-id" pattern=".{8,}">
+        <div [hidden]="eventEditorForm.controls['name']?.valid" class="error-message">You can try again.</div>
+      </div>
+      <div class="form-group">
+        <label for="date-id">Date</label>
+        <input required [(ngModel)]="ev.date" type="text" class="form-control" name="date" id="date-id">
+        <div [hidden]="eventEditorForm.controls['date']?.valid" class="error-message">You can try again.</div>
+      </div>
+      <div class="form-group">
+        <label for="time-id">Time</label>
+        <input required [(ngModel)]="ev.time" type="text" class="form-control" name="time" id="time-id">
+        <div [hidden]="eventEditorForm.controls['time']?.valid" class="error-message">You can try again.</div>
+      </div>
+      <div class="form-group">
+        <label for="location-id">Location</label>
+        <input required [(ngModel)]="ev.location" type="text" class="form-control" name="location" id="location-id">
+        <div [hidden]="eventEditorForm.controls['location']?.valid" class="error-message">You can try again.</div>
+      </div>
+      <button [disabled]="eventEditorForm.invalid" type="submit" class="btn btn-block btn-primary">
+        <i class="fa fa-save"> Update</i>
+      </button>
+
+    </form>
+  </div>
+</div>
